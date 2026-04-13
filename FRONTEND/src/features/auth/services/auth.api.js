@@ -4,7 +4,7 @@ import axios from "axios"
 
 // create an api
 const api = axios.create({
-    baseURL: "https://moodify-music-recommendation-backend.onrender.com",
+    baseURL: "http://localhost:3000",
     withCredentials: true
 })
 
