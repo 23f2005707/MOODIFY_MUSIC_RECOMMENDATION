@@ -11,7 +11,7 @@ app.use(express.json())
 app.use(cookieParser())
 
 app.use(cors({
-    origin: "moodify-music-recommendation.vercel.app",
+    origin: "https://moodify-music-recommendation.vercel.app",
     credentials: true
 }))
 
