@@ -53,6 +53,8 @@ const Home = () => {
 
   const [control, setControl] = useState(null);  // song controls
 
+  const [volume, setVolume] = useState(1);
+
   // const handleMoodChange = useCallback((expression) => {
   //   console.log("Detected mood:", expression)
   //   handleGetSongsByMood({ mood: expression})  // wrap here
@@ -64,6 +66,10 @@ const Home = () => {
     // modd detection 
     if(data?.mood) {
       handleGetSongsByMood({ mood: data.mood})  // wrap here
+    }
+
+    if(data?.volume !== undefined) {
+      setVolume(data.volume);
     }
 
     // Gesture control 
@@ -127,7 +133,7 @@ const Home = () => {
 
         {/* Player */}
         <div className="home-player">
-          <Player control = {control} />
+          <Player control = {control} volumeGesture={volume}/>
         </div>
 
       </div>

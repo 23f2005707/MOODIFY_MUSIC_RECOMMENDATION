@@ -19,4 +19,9 @@ app.use(cors({
 app.use("/api/auth", authRouter)
 app.use("/api/songs", songRouter)
 
+
+app.get('/ping', (req, res) => {
+  res.send('pong');
+});
+
 module.exports = app 

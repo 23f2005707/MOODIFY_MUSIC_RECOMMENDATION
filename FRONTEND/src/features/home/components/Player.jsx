@@ -255,7 +255,7 @@ const formatTime = (seconds) => {
     return `${m}:${s}`
 }
 
-const Player = ({ control }) => {  // as a prop cotrol of song
+const Player = ({ control, volumeGesture }) => {  // as a prop cotrol of song
     const { song } = useSong()  // getting songs from hook
 
     // if(!song) return null   // if no song is selected, don't render the player
@@ -324,6 +324,22 @@ const Player = ({ control }) => {  // as a prop cotrol of song
         }
 
     }, [control]);
+
+
+    /// VOLUME ADD
+    useEffect(() => {
+        if(!audioRef.current || volumeGesture === undefined) return;
+
+        // Normalize the distance (0.02 -> 0.3 approx)
+        let vol = (volumeGesture - 0.02) / (0.3 - 0.02);
+
+        // Clamp between 0 and 1 
+        vol = Math.max(0, Math.min(1, vol));
+
+        audioRef.current.volume = vol;
+        setVolume(vol);
+        
+    }, [volumeGesture]);
 
     // PLAY /PAUSE TOGGLE
     const togglePlay = () => {

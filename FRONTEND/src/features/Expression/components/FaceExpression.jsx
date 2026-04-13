@@ -115,23 +115,26 @@ export default function FaceExpression({ onClick = () => { } }) {
                 });
 
                 // hand 
-                const handGesture = await detectHandGesture({
+                const handData = await detectHandGesture({
                     handLandmarkerRef,
                     videoRef 
                 })
                 
                 // HANDLE HAND CONTROL 
-                if(handGesture && handGesture !== lastGestureRef.current) {
-                    lastGestureRef.current = handGesture;
 
-                    console.log("Hand:", handGesture);
+                if(handData && handData.gesture && handData.gesture !== lastGestureRef.current) {
+                    lastGestureRef.current = handData.gesture;
 
-                    onClick({ control: handGesture });  // send to player
+                    console.log("Hand:", handData.gesture);
+
+                    onClick({ control: handData.gesture });  // send to player
 
                     // RESET after 1.5 sec 
                     setTimeout(() => {
                         lastGestureRef.current = null;
                     }, 1500);
+
+                    // Volume 
                 }
 
                 // ✅ Avoid duplicate calls

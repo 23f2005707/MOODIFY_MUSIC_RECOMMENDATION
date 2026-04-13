@@ -231,10 +231,30 @@ export const detectHandGesture = async ({
     const isThumb = thumb.y < wrist.y;
     const isThumbDown = thumb.y > wrist.y;
 
-    if(isOpenPalm) return "play";
-    if(isFist) return "pause";
-    if(isThumb) return "next";
-    if(isThumbDown) return "previous";
+  
+    let detectedGesture = null; 
+  
 
-    return null;
+    // if(isOpenPalm) return "play";
+    // if(isFist) return "pause";
+    // if(isThumb) return "next";
+    // if(isThumbDown) return "previous";
+
+    if(isOpenPalm) detectedGesture = "play";
+    else if(isFist) detectedGesture = "pause";
+    else if(isThumb) detectedGesture = "next";
+    else if(isThumbDown) detectedGesture = "previous";
+
+      /// distance based volume
+    const distance = Math.sqrt(
+        Math.pow(thumb.x - index.x, 2) + Math.pow(thumb.y - index.y, 2)
+    )
+
+    return {
+        gesture: detectedGesture,
+        volume: distance 
+    };
+
+
+    // return null;
 }

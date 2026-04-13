@@ -40,6 +40,7 @@ import { getSongsByMood } from "../service/song.api.js";
 export const useSong = () => {
 
     const context = useContext(SongContext);
+    
 
     const {
         loading,
@@ -51,7 +52,7 @@ export const useSong = () => {
     } = context;
 
     // 🔥 FETCH SONGS BY MOOD (MAIN API)
-    async function handleGetSongsByMood({mood}) {
+    async function handleGetSongsByMood({ mood }) {
         try {
             setLoading(true);
 
@@ -86,7 +87,7 @@ export const useSong = () => {
             setSongsList(shuffledSongs);
 
             // ✅ auto select first song
-            if (songs.length > 0) {
+            if (shuffledSongs.length > 0) {
                 setSong(shuffledSongs[0]);
             } else {
                 setSong(null); // ✅ reset player if empty
