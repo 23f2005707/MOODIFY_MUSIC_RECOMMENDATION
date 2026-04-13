@@ -98,7 +98,11 @@ async function loginController(req, res) {
     )
 
       // 5️⃣ Send cookie
-    res.cookie("token", token)
+    res.cookie("token", token, {
+        httpOnly: true,
+        secure: true,
+        sameSite: "None"
+    })
 
      // 6️⃣ Success response
     return res.status(200).json({
