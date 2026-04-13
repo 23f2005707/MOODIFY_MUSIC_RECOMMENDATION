@@ -43,7 +43,7 @@ import FaceExpression from "../../Expression/components/FaceExpression"
 import Player from '../components/Player'
 import Sidebar from '../components/Sidebar'
 import { useSong } from '../hooks/useSong.js'
-import "./home.scss"
+import "./Home.scss"
 import { useCallback } from 'react'
 
 
