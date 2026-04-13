@@ -66,7 +66,7 @@
 
 import React from 'react'
 import { useSong } from '../hooks/useSong.js'
-import "./sidebar.scss"
+import "./Sidebar.scss"
 
 const Sidebar = () => {
 
